@@ -83,8 +83,8 @@ python --version
 ### Step 1 — Clone the Repository
 
 ```bash
-[git clone https://github.com/your-username/hangman-game.git
-](https://github.com/vaishviagrawal06/Hangman-Game.git)```
+https://github.com/vaishviagrawal06/Hangman-Game.git
+```
 
 ### Step 2 — Navigate to the Project Folder
 
