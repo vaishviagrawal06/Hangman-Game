@@ -1,6 +1,6 @@
 import random
 
-print("Welcome to the Hangman Game")
+print("🎮 Welcome to the Hangman Game!")
 
 # level select karo
 print("Select level of the game!")
@@ -72,6 +72,10 @@ while chances > 0:
 
     # HINT SYSTEM
     if guess == "hint":
+        
+        if score<10:
+            print("⚠️You don't have enough score to use hint!")
+            continue
 
         hidden_index = []
 
@@ -93,7 +97,7 @@ while chances > 0:
 
     # Already guessed check
     if guess in guessed_letter:
-        print("⚠️ Already guessed!")
+        print("🌟 Already guessed!")
         continue
 
     guessed_letter.append(guess)
@@ -117,10 +121,10 @@ while chances > 0:
 
     # WIN CONDITION
     if "_" not in guessed_word:
-        print("\n🎉 Congratulations! You Won!")
+        print("\n🎉 Congratulations!You Won🎉")
         print("Word was:", secret_word)
 
-        score += 50
+        # score += 50
         print("Final Score:", score)
         break
 
