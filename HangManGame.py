@@ -7,7 +7,6 @@ print("Select level of the game!")
 print("1.Easy")
 print("2.Medium")
 print("3.Hard")
-print("enter HINT to get hint of a letter")
 
 choice = input("Enter the LEVEL(1,2,3):-")
 
@@ -68,13 +67,14 @@ while chances > 0:
     print("Chances left:", chances)
     print("Score:", score)
 
+    print("Enter 'HINT' to get a letter hint (-5 points).")
     guess = input("Enter a letter: ").lower()
-
+    
     # HINT SYSTEM
     if guess == "hint":
         
         if score<10:
-            print("⚠️You don't have enough score to use hint!")
+            print("⚠️ You don't have enough score to use hint! ")
             continue
 
         hidden_index = []
@@ -89,9 +89,17 @@ while chances > 0:
 
             guessed_word[reveal] = secret_word[reveal]
 
-            score = max(score - 10, 0)
+            score = max(score - 5, 0)
+            
+            # ✅ Win condition after hint
+            if "_" not in guessed_word:
+                 print("\n🎉 Congratulations! You Won 🎉")
+                 print("Word was:", secret_word)
+            
+                 score += 50
+                 print("Final score:", score)
+                 break
 
-            print("💡 Hint used! Score -10")
 
         continue
 
@@ -114,22 +122,26 @@ while chances > 0:
 
     # Wrong Guess
     else:
-        print("❌ Wrong Guess!")
+        print("❌ Wrong Guess...score -5!")
+        
 
         chances -= 1
-        score = max(score - 5, 0)
+        # score = max(score - 5, 0)
+        score -= 5
+        print("Score: ",score)
 
     # WIN CONDITION
     if "_" not in guessed_word:
         print("\n🎉 Congratulations!You Won🎉")
         print("Word was:", secret_word)
 
-        # score += 50
-        print("Final Score:", score)
+
+        score += 50
+        print("Final score: ",score)
         break
 
 
 if chances == 0:
-    print("Game Over!")
+    print("😔Game Over!")
     print("Original word was: ", secret_word)
     print("Final score: ", score)
